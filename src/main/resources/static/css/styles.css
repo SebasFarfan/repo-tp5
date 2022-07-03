@@ -1,0 +1,49 @@
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.9),rgba(0,0,0,0.8)), url(../img/fondo01.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.contenido {
+    
+    flex: 1;
+}
+
+.contenedor {
+    background-color: #DFF1EF;
+}
+
+.imagen-carousel {
+    width: 400px;
+    height: 400px;
+}
+.imagen {
+    max-height: 100% !important;
+    max-width: 100% !important;
+    object-fit: cover !important;
+}
+.navbar {
+    background-color: #DAF7A6;    
+}
+
+.navbar-nav a {
+    color: #046358 !important;
+}
+
+.navbar-nav a:hover {
+    background-color: #026D60 !important;
+    color: whitesmoke !important;
+}
+
+.navbar-toggler {
+    background-color: transparent !important;
+    border-color: #026D60 !important;
+}
+
+i {
+    color:#026D60 !important;
+}

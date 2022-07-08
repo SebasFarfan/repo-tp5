@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/layouts/head::head">
+</head>
+
+
+<body>
+    <div th:replace="/layouts/header::header"></div>
+    <div class="contenido">
+        <div class="container">
+            <div class="contenedor py-4">
+                <div class="container">
+                    <div class="card ">
+                        <div class="card-header text-light bg-primary">
+                            <h5>Formulario de Contacto</h5>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-8">
+                                    <!-- <form th:action="@{}" method="post"> -->
+                                    <form action="">
+                                        <div class="mb-3 row">
+                                            <label for="txt-apellido" class="col-sm-2 col-form-label">Apellido</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="txt-apellido"
+                                                    placeholder="Ingrese apellido">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="txt-nombre" class="col-sm-2 col-form-label">Nombre</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="txt-nombre"
+                                                    placeholder="Ingrese nombres">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-2 col-form-label">Provincia</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-select" aria-label="provincia">
+                                                    <option selected>Seleccionar...</option>
+                                                    <option value="1">Buenos Aires</option>
+                                                    <option value="2">Ciudad Autónoma de Buenos Aires</option>
+                                                    <option value="3">Catamarca</option>
+                                                    <option value="4">Chaco</option>
+                                                    <option value="5">Chubut</option>
+                                                    <option value="6">Córdoba</option>
+                                                    <option value="7">Corrientes</option>
+                                                    <option value="8">Entre Ríos</option>
+                                                    <option value="9">Formosa</option>
+                                                    <option value="10">Jujuy</option>
+                                                    <option value="11">La Pampa</option>
+                                                    <option value="12">La Rioja</option>
+                                                    <option value="13">Mendoza</option>
+                                                    <option value="14">Misiones</option>
+                                                    <option value="15">Neuquén</option>
+                                                    <option value="16">Río Negro</option>
+                                                    <option value="17">Salta</option>
+                                                    <option value="18">San Juan</option>
+                                                    <option value="19">San Luis</option>
+                                                    <option value="20">Santa Cruz</option>
+                                                    <option value="21">Santa Fe/option>
+                                                    <option value="22">Santiago del Estero</option>
+                                                    <option value="23">Tierra del Fuego</option>
+                                                    <option value="24">Tucumán</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="txt-telefono" class="col-sm-2 col-form-label">Teléfono</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="txt-telefono"
+                                                    placeholder="ejemplo 119999999">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="txt-mail" class="col-sm-2 col-form-label">Correo electrónico</label>
+                                            <div class="col-sm-10">
+                                                <input type="email" class="form-control" id="txt-mail"
+                                                    placeholder="name@example.com">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="estado" class="form-label">Estado</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="rd-estado" id="rd-soltero">
+                                                <label class="form-check-label" for="rd-soltero">
+                                                    Soltero
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="rd-estado" id="rd-casado"
+                                                    checked>
+                                                <label class="form-check-label" for="rd-casado">
+                                                    Casado
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="rd-estado" id="rd-otro"
+                                                    checked>
+                                                <label class="form-check-label" for="rd-otro">
+                                                    Otro
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 row">
+                                            <label for="txt-mensaje" class="col-sm-2 col-form-label">Mensaje</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" id="txt-mensaje" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">                                    
+                                            <button class="btn btn-primary bg-gradient" type="submit">Enviar Datos</button>
+                                        </div>
+        
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

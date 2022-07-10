@@ -1,17 +1,34 @@
 package ar.edu.unju.fi.repotp5.models;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Alumno {
-    private String dni;
+    @NotNull(message = "Ingresar un número de DNI")
+    @Min(value = 1000000, message = "El DNI debe ser mayor o igual a 1.000.000")    
+    private int dni;
+    @Size(min = 3, max = 100, message = "El nombre tiene que tenr entre 3 y 100 caractéres")
+    @NotEmpty(message = "En nombre no debe ser vacío")
     private String nombre;
+    @NotBlank(message = "El apellido no debe estar en blanco")
     private String apellido;
+    @NotEmpty(message = "El número de teléfono no debe estar vacío")
     private String telefono;
+    @NotEmpty @Email(message = "e-mail no valido")
     private String email;
 
 
     public Alumno() {
     }
 
-    public Alumno(String dni, String nombre, String apellido, String telefono, String email) {
+    public Alumno(int dni, String nombre, String apellido, String telefono, String email) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -19,11 +36,11 @@ public class Alumno {
         this.email = email;
     }
 
-    public String getDni() {
+    public int getDni() {
         return this.dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 

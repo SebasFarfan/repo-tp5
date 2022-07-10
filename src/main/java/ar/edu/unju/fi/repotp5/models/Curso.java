@@ -2,8 +2,15 @@ package ar.edu.unju.fi.repotp5.models;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class Curso {
+    @Min(value = 1000000, message = "El DNI debe ser mayor o igual a 1.000.000")
     private int codigo;
+    @Size(min = 3, max = 100, message = "El título debe tener entre 3 y 100 caractéres")
+    @NotEmpty(message = "El título no puede ser vacío")
     private String titulo;
     private String categoria;
     private LocalDate fechaInicio;

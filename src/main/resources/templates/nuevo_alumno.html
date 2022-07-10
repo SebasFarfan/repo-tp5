@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/layouts/head::head">
+</head>
+<div th:replace="/layouts/header::header"></div>
+<div class="contenido">
+    <div class="container">
+        <div class="contenedor py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col col-8">
+                        <div class="card">
+                            <div class="card-header text-light bg-primary">
+                                <h5>Alta de Alumno</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row justify-content-md-center">
+                                    <form th:action="@{/alumno/guardar}" th:object="${alumno}" method="post">
+                                        <div class="mb-3">
+                                            <label for="txt-dni" class="form-label">DNI</label>
+                                            <input type="number" class="form-control" id="txt-dni" th:field="*{dni}">
+                                            <div class="alert alert-danger mt-2" role="alert"
+                                                th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="txt-apellido" class="form-label">Apellidos</label>
+                                            <input type="text" class="form-control" id="txt-apellido"
+                                                th:field="*{apellido}">
+                                            <div class="alert alert-danger mt-2" role="alert"
+                                                th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="txt-nombre" class="form-label">Nombres</label>
+                                            <input type="text" class="form-control" id="txt-nombre"
+                                                th:field="*{nombre}">
+                                            <div class="alert alert-danger mt-2" role="alert"
+                                                th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="txt-mail" class="form-label">E-mail</label>
+                                            <input type="email" class="form-control" id="txt-mail"
+                                                placeholder="name@example.com" th:field="*{email}">
+                                            <div class="alert alert-danger mt-2" role="alert"
+                                                th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="txt-telefono" class="form-label">Teléfono</label>
+                                            <input type="text" class="form-control" id="txt-telefono"
+                                                th:field="*{telefono}">
+                                            <div class="alert alert-danger mt-2" role="alert"
+                                                th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}">
+                                            </div>
+                                        </div>
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+                                            <button class="btn btn-success me-md-2" type="submit">Enviar</button>
+                                            <button class="btn btn-danger" type="button">Cancelar</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="/layouts/footer::footer"></div>
+
+
+
+<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+
+<body>
+
+</body>
+
+</html>

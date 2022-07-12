@@ -2,21 +2,37 @@ package ar.edu.unju.fi.repotp5.models;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Curso {
-    @Min(value = 1000000, message = "El DNI debe ser mayor o igual a 1.000.000")
+    @Min(value = 1, message = "Ingresar un codigo mayor a 0")
     private int codigo;
     @Size(min = 3, max = 100, message = "El título debe tener entre 3 y 100 caractéres")
     @NotEmpty(message = "El título no puede ser vacío")
     private String titulo;
+    @NotEmpty(message = "Debe elegir una categoría")
     private String categoria;
+    @NotNull(message = "Debe ingresar una fecha")
+    @FutureOrPresent(message = "La fecha debe ser de hoy en adelante")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaInicio;
+    @NotNull(message = "Debe ingresar una fecha")
+    @FutureOrPresent(message = "La fecha debe ser de hoy en adelante")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechaFin;
+    @Min(value = 1, message = "La cantidad de horas tiene que ser mayor o igual 1")
     private int cantidadHoras;
-    private String movilidad;
+    @NotEmpty(message = "Debe elegir modalidad")
+    private String modalidad;
+    @NotNull(message = "Debe seleccionar un docente")    
     private Docente docente;
 
 
@@ -30,7 +46,7 @@ public class Curso {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.cantidadHoras = cantidadHoras;
-        this.movilidad = movilidad;
+        this.modalidad = movilidad;
         this.docente = docente;
     }
 
@@ -82,12 +98,12 @@ public class Curso {
         this.cantidadHoras = cantidadHoras;
     }
 
-    public String getMovilidad() {
-        return this.movilidad;
+    public String getModalidad() {
+        return this.modalidad;
     }
 
-    public void setMovilidad(String movilidad) {
-        this.movilidad = movilidad;
+    public void setModalidad(String movilidad) {
+        this.modalidad = movilidad;
     }
 
     public Docente getDocente() {

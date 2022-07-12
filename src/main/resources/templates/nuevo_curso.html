@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/layouts/head::head">
+</head>
+
+<body>
+    <div th:replace="/layouts/header::header"></div>
+    <div class="contenido">
+        <div class="container">
+            <div class="contenedor py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col col-8">
+                            <div class="card">
+                                <div class="card-header text-light bg-primary">
+                                    <h5>Alta de Curso</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-md-center">
+                                        <form th:action="@{/curso/guardar}" th:object="${curso}" method="post">
+                                            <div class="mb-3">
+                                                <label for="txt-codigo" class="form-label">Codigo</label>
+                                                <input type="number" class="form-control" id="txt-codigo"
+                                                    th:field="*{codigo}">
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="txt-titulo" class="form-label">Título</label>
+                                                <input type="text" class="form-control" id="txt-titulo"
+                                                    th:field="*{titulo}">
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="txt-categoria" class="form-label">Categoria</label>
+                                                <select class="form-select" th:field="*{categoria}">
+                                                    <option value="" selected>Seleccionar ...</option>
+                                                    <option value="idioma">Idioma</option>
+                                                    <option value="desarrollo">Desarrollo</option>
+                                                    <option value="diseño">Diseño</option>
+                                                    <option value="marketing">Marketing</option>
+                                                    <option value="conferencia">Conferencia</option>
+                                                </select>
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="txt-fecha-inicio" class="form-label">Fecha Inicio</label>
+                                                <input type="date" class="form-control" id="txt-fecha-inicio"
+                                                    th:field="*{fechaInicio}">
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('fechaInicio')}"
+                                                    th:errors="*{fechaInicio}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="txt-fecha-fin" class="form-label">Fecha Finalización</label>
+                                                <input type="date" class="form-control" id="txt-fecha-fin"
+                                                    th:field="*{fechaFin}">
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="txt-cantidad" class="form-label">Cantidad horas</label>
+                                                <input type="number" class="form-control" id="txt-cantidad"
+                                                    th:field="*{cantidadHoras}">
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('cantidadHoras')}"
+                                                    th:errors="*{cantidadHoras}">
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="txt-modalidad" class="form-label">Modalidad</label>
+                                                <div mt-3>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="opcion-modalidad" id="inlineRadio1" th:field="*{modalidad}" value="presencial">
+                                                        <label class="form-check-label" for="inlineRadio1">Presencial</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="opcion-modalidad" id="inlineRadio2" th:field="*{modalidad}" value="virtual">
+                                                        <label class="form-check-label" for="inlineRadio2">Virtual</label>
+                                                    </div>
+                                                </div>
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('modalidad')}" th:errors="*{modalidad}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="txt-docente" class="form-label">Docente</label>
+                                                <select class="form-select" th:field="*{docente.legajo}">
+                                                    <!-- <option th:value="0" selected>Seleccionar ...</option> -->
+                                                    <option th:each="docente : ${docentes}" th:value="${docente.legajo}"
+                                                        th:text="${docente.apellido}+', '+${docente.nombre}">
+                                                    </option>
+                                                </select>
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('docente')}" th:errors="*{docente}">
+                                                </div>
+                                            </div>
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+                                                <button class="btn btn-success me-md-2" type="submit">Enviar</button>
+                                                <button class="btn btn-danger" type="button">Cancelar</button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="/layouts/footer::footer"></div>
+
+
+
+    <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>

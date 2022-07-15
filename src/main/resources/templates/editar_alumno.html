@@ -18,7 +18,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row justify-content-md-center">
-                                        <form th:action="@{/alumno/guardar}" th:object="${alumno}" method="post">
+                                        <form th:action="@{/alumno/actualizar}" th:object="${alumno}" method="post">
                                             <div class="mb-3">
                                                 <label for="txt-dni" class="form-label">DNI</label>
                                                 <input type="number" class="form-control" id="txt-dni"
@@ -60,7 +60,7 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
-                                                <button class="btn btn-success me-md-2" type="submit">Enviar</button>
+                                                <button class="btn btn-success me-md-2" type="submit">Actualizar</button>
                                                 <button class="btn btn-danger" type="button">Cancelar</button>
                                             </div>
 

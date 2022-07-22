@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import ar.edu.unju.fi.repotp5.models.Alumno;
+import ar.edu.unju.fi.repotp5.entity.Alumno;
 import ar.edu.unju.fi.repotp5.services.IAlumnoService;
 import ar.edu.unju.fi.repotp5.util.ListaAlumnos;
 
@@ -14,8 +14,7 @@ public class AlumnoServiceImp implements IAlumnoService {
     private List<Alumno> alumnos;
 
     @Override
-    public Alumno getAlumno() {
-        // TODO Auto-generated method stub
+    public Alumno getAlumno() {        
         return null;
     }
 

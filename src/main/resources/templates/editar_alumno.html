@@ -21,6 +21,7 @@
                                         <form th:action="@{/alumno/actualizar}" th:object="${alumno}" method="post">
                                             <div class="mb-3">
                                                 <label for="txt-dni" class="form-label">DNI</label>
+                                                <input type="hidden" name="id-alumno" th:field="*{codigo}">
                                                 <input type="number" class="form-control" id="txt-dni"
                                                     th:field="*{dni}">
                                                 <div class="alert alert-danger mt-2" role="alert"

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.repotp5.models.Curso;
-import ar.edu.unju.fi.repotp5.models.Docente;
+import ar.edu.unju.fi.repotp5.entity.Curso;
+import ar.edu.unju.fi.repotp5.entity.Docente;
 import ar.edu.unju.fi.repotp5.util.ListaCursos;
 import ar.edu.unju.fi.repotp5.util.ListaDocente;
 

@@ -2,7 +2,7 @@ package ar.edu.unju.fi.repotp5.services;
 
 import java.util.List;
 
-import ar.edu.unju.fi.repotp5.models.Alumno;
+import ar.edu.unju.fi.repotp5.entity.Alumno;
 
 public interface IAlumnoService {
     

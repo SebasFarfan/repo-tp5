@@ -45,8 +45,8 @@
                                     <td th:text="${curso.cantidadHoras}"></td>
                                     <td th:text="${curso.modalidad}"></td>
                                     <td th:text="${curso.docente.apellido}+', '+${curso.docente.nombre}"></td>
-                                    <td><a href="#" class="btn btn-warning">editar</a></td>
-                                    <td><a href="#" class="btn btn-danger">eliminar</a></td>
+                                    <td><a th:href="@{/curso/editar/}+${curso.codigo}" class="btn btn-warning">editar</a></td>
+                                    <td><a th:href="@{/curso/eliminar/}+${curso.codigo}" class="btn btn-danger">eliminar</a></td>
                                 </tr>
                             </tbody>
                         </table>

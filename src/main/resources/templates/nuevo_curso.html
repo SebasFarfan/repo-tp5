@@ -14,11 +14,16 @@
                         <div class="col col-8">
                             <div class="card">
                                 <div class="card-header text-light bg-primary">
-                                    <h5>Alta de Curso</h5>
+                                    <h5 th:text="${titulo_form}"></h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row justify-content-md-center">
                                         <form th:action="@{/curso/guardar}" th:object="${curso}" method="post">
+                                            <div class="mb-3" th:if="${opcion !='nuevo'}">
+                                                <label for="txt-id" class="form-label">Id</label>
+                                                <input type="number" class="form-control" id="txt-id"
+                                                    th:field="*{id}" readonly>                                                
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="txt-codigo" class="form-label">Codigo</label>
                                                 <input type="number" class="form-control" id="txt-codigo"
@@ -107,7 +112,12 @@
                                                 </div>
                                             </div>
                                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
-                                                <button class="btn btn-success me-md-2" type="submit">Enviar</button>
+                                                <button th:class="${opcion == 'nuevo'} ? 'btn btn-success me-md-2' : 'btn btn-warning me-md-2'" type="submit">
+                                                    <div th:switch="${opcion}">
+                                                        <div th:case="nuevo">Agregar</div>
+                                                        <div th:case="editar">Actualizar</div>
+                                                    </div>
+                                                </button>
                                                 <button class="btn btn-danger" type="button">Cancelar</button>
                                             </div>
 

@@ -14,36 +14,50 @@
                         <div class="col col-8">
                             <div class="card">
                                 <div class="card-header text-light bg-primary">
-                                    <h5>Alta de Docente</h5>
+                                    <h5 th:text="${titulo_form}"></h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="row justify-content-md-center">
                                         <form th:action="@{/docente/guardar}" th:object="${docente}" method="post">
+                                            <div th:if="${opcion != 'nuevo'}" class="mb-3">
+                                                <label for="txt-codigo" class="form-label">Código</label>
+                                                <input type="text" class="form-control" id="txt-codigo" readonly th:field="*{id}">
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="txt-legajo" class="form-label">Legajo</label>
-                                                <input type="text" class="form-control" id="txt-legajo" th:field="*{legajo}">
-                                              </div>
-                                              <div class="mb-3">
+                                                <input type="text" class="form-control" id="txt-legajo"
+                                                    th:field="*{legajo}">
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="txt-apellido" class="form-label">Apellidos</label>
-                                                <input type="text" class="form-control" id="txt-apellido" th:field="*{apellido}">
-                                              </div>
-                                              <div class="mb-3">
+                                                <input type="text" class="form-control" id="txt-apellido"
+                                                    th:field="*{apellido}">
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="txt-nombre" class="form-label">Nombres</label>
-                                                <input type="text" class="form-control" id="txt-nombre" th:field="*{nombre}">
-                                              </div>
-                                              <div class="mb-3">
+                                                <input type="text" class="form-control" id="txt-nombre"
+                                                    th:field="*{nombre}">
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="txt-mail" class="form-label">E-mail</label>
-                                                <input type="email" class="form-control" id="txt-mail" placeholder="name@example.com" th:field="*{email}">
-                                              </div>
-                                              <div class="mb-3">
+                                                <input type="email" class="form-control" id="txt-mail"
+                                                    placeholder="name@example.com" th:field="*{email}">
+                                            </div>
+                                            <div class="mb-3">
                                                 <label for="txt-telefono" class="form-label">Teléfono</label>
-                                                <input type="text" class="form-control" id="txt-telefono" th:field="*{telefono}">
-                                              </div>
-                                              <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
-                                                <button class="btn btn-success me-md-2" type="submit">Enviar</button>
+                                                <input type="text" class="form-control" id="txt-telefono"
+                                                    th:field="*{telefono}">
+                                            </div>
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+                                                <button th:class="${opcion == 'nuevo'} ? 'btn btn-success me-md-2' : 'btn btn-warning me-md-2'" type="submit">
+                                                    <div th:switch="${opcion}">
+                                                        <div th:case="nuevo">Agregar</div>
+                                                        <div th:case="editar">Actualizar</div>
+                                                    </div>
+                                                </button>
                                                 <button class="btn btn-danger" type="button">Cancelar</button>
-                                              </div>
-    
+                                            </div>
+
                                         </form>
                                     </div>
                                 </div>

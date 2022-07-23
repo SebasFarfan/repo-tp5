@@ -25,6 +25,7 @@
             <table class="table table-hover align-middle">
               <thead>
                 <tr>
+                  <th class="text-center" scope="col">Código</th>
                   <th class="text-center" scope="col">Legajo</th>
                   <th class="text-center" scope="col">Apellido</th>
                   <th class="text-center" scope="col">Nombres</th>
@@ -35,13 +36,14 @@
               </thead>
               <tbody>
                 <tr th:each="docente : ${docentes}">
+                  <td th:text="${docente.id}"></td>
                   <td th:text="${docente.legajo}"></td>
                   <td th:text="${docente.apellido}"></td>
                   <td th:text="${docente.nombre}"></td>
                   <td th:text="${docente.email}"></td>
                   <td th:text="${docente.telefono}"></td>
-                  <td><a href="#" class="btn btn-warning">editar</a></td>
-                  <td><a href="#" class="btn btn-danger">eliminar</a></td>
+                  <td><a th:href="@{/docente/editar/}+${docente.legajo}" class="btn btn-warning">editar</a></td>
+                  <td><a th:href="@{/docente/eliminar/}+${docente.legajo}" class="btn btn-danger">eliminar</a></td>
                 </tr>
               </tbody>
             </table>

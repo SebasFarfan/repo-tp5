@@ -19,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.repotp5.entity.Alumno;
 import ar.edu.unju.fi.repotp5.services.IAlumnoService;
-import ar.edu.unju.fi.repotp5.util.ListaAlumnos;
+// import ar.edu.unju.fi.repotp5.util.ListaAlumnos;
 
 @Controller
 @RequestMapping("/alumno")

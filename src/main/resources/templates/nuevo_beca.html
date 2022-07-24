@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="/layouts/head::head">
+</head>
+
+<body>
+    <div th:replace="/layouts/header::header"></div>
+    <div class="contenido">
+        <div class="container">
+            <div class="contenedor py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col col-8">
+                            <div class="card">
+                                <div class="card-header text-light bg-primary">
+                                    <h5 th:text="${titulo_formulario}"></h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-md-center">
+                                        <form th:action="@{/beca/guardar}" th:object="${beca}" method="post">
+                                            <div th:if="${opcion != 'nuevo'}" class="mb-3">
+                                                <label for="txt-codigo" class="form-label">Codigo</label>
+                                                <input type="number" class="form-control" id="txt-codigo" th:field="*{codigo}" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="txt-curso" class="form-label">Curso</label>
+                                                <select class="form-select" th:field="*{curso.codigo}">
+                                                    <!-- <option th:value="0" selected>Seleccionar ...</option> -->
+                                                    <option th:each="curso : ${cursos}" th:value="${curso.codigo}"
+                                                        th:text="${curso.titulo}">
+                                                    </option>
+                                                </select>
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('curso')}" th:errors="*{curso}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="txt-fecha-inicio" class="form-label">Fecha Inicio</label>
+                                                <input type="date" class="form-control" id="txt-fecha-inicio"
+                                                    th:field="*{fechaInicio}">
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('fechaInicio')}"
+                                                    th:errors="*{fechaInicio}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="txt-fecha-fin" class="form-label">Fecha Finalización</label>
+                                                <input type="date" class="form-control" id="txt-fecha-fin"
+                                                    th:field="*{fechaFin}">
+                                                <div class="alert alert-danger mt-2" role="alert"
+                                                    th:if="${#fields.hasErrors('fechaFin')}" th:errors="*{fechaFin}">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="aprobado" id="check-estado" th:field="*{estado}">
+                                                    <label class="form-check-label" for="check-estado">
+                                                        Aprobado
+                                                    </label>
+                                                  </div>
+                                            </div>
+
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+                                                <button th:class="${opcion == 'nuevo'} ? 'btn btn-success me-md-2' : 'btn btn-warning me-md-2'" type="submit">
+                                                    <div th:switch="${opcion}">
+                                                        <div th:case="nuevo">Agregar</div>
+                                                        <div th:case="editar">Actualizar</div>
+                                                    </div>                                                    
+                                                </button>
+                                                <button class="btn btn-danger" type="button">Cancelar</button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="/layouts/footer::footer"></div>
+
+
+
+    <script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+</body>
+
+</html>

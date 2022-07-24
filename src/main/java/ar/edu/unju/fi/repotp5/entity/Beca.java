@@ -2,7 +2,7 @@ package ar.edu.unju.fi.repotp5.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
+// import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,15 +24,26 @@ import org.springframework.stereotype.Component;
 public class Beca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "beca_id")
+    @Column(name = "beca_id") 
     private Long codigo;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "curso_id")
+
+    @NotNull(message = "Debe elegir un curso")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "curso_id")    
     private Curso curso;
+
+    @NotNull(message = "Debe ingresar una fecha")
+    @FutureOrPresent(message = "La fecha debe ser de hoy en adelante")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
     private LocalDate fechaInicio;
+
+    @NotNull(message = "Debe ingresar una fecha")
+    @FutureOrPresent(message = "La fecha debe ser de hoy en adelante")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
     private LocalDate fechaFin;
+    
     @Column
     private String estado;
 

@@ -1,11 +1,15 @@
 package ar.edu.unju.fi.repotp5.entity;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -41,6 +45,11 @@ public class Alumno {
     @Column
     private String email;
     
+    @ManyToMany(mappedBy = "alumnos")
+    private Set<Curso> cursos;
+
+    @Transient
+    private int codigoCurso;
 
     public Alumno() {
     }
@@ -102,5 +111,23 @@ public class Alumno {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+    public Set<Curso> getCursos() {
+        return this.cursos;
+    }
+
+    public void setCursos(Set<Curso> cursos) {
+        this.cursos = cursos;
+    }
+
+    public int getCodigoCurso() {
+        return this.codigoCurso;
+    }
+
+    public void setCodigoCurso(int codigoCurso) {
+        this.codigoCurso = codigoCurso;
+    }
+
 
 }

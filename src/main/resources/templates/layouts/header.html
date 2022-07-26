@@ -30,15 +30,31 @@
               <a class="nav-link" href="#">BENEFICIOS Y BECAS</a>
               <a class="nav-link" th:href="@{/contacto}">CONTÁCTANOS</a>
               <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
                   DATOS
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" th:href="@{/docente/listado-docente}">Docentes</a></li>
                   <li><a class="dropdown-item" th:href="@{/alumno/listado-alumnos}">Alumnos</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" th:href="@{/beca/listado-becas}">Becas</a></li>
-                  <li><a class="dropdown-item" th:href="@{/curso/listado-cursos}">Cursos</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" th:href="@{/beca/listado-becas}">Becas</a></li>                  
+                </ul>
+              </div>
+              <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  CURSOS
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" th:href="@{/curso/nuevo}">nuevo</a></li>
+                  <li><a class="dropdown-item" th:href="@{/curso/listado-cursos}">Listado Cursos</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" th:href="@{/curso/inscribir}">Inscripcion</a></li>                  
                 </ul>
               </div>
             </div>

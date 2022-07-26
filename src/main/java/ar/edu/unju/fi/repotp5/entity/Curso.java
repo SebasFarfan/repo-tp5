@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.repotp5.entity;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -77,6 +78,14 @@ public class Curso {
     @ManyToMany
     @JoinTable(name = "curso_alumno",joinColumns = @JoinColumn(name="curso_id"),inverseJoinColumns = @JoinColumn(name="alumno_id"))
     private Set<Alumno> alumnos;
+
+
+    public void addAlumnos(Alumno alumno) {
+        if (this.alumnos == null) {
+            this.alumnos = new HashSet<Alumno>();
+        }
+        this.alumnos.add(alumno);
+    }
 
 
     public Curso() {

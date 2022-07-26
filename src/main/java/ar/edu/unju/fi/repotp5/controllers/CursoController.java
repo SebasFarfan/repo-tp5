@@ -16,10 +16,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.repotp5.entity.Alumno;
 import ar.edu.unju.fi.repotp5.entity.Curso;
 import ar.edu.unju.fi.repotp5.entity.Docente;
+import ar.edu.unju.fi.repotp5.services.IAlumnoService;
 import ar.edu.unju.fi.repotp5.services.ICursoService;
 import ar.edu.unju.fi.repotp5.services.IDocenteService;
 // import ar.edu.unju.fi.repotp5.util.ListaCursos;
@@ -39,6 +42,8 @@ public class CursoController {
     private String opcion;
     private String tituloForm;
 
+    // private Long codCurso;
+
     @Autowired
     private Curso curso;
 
@@ -49,6 +54,10 @@ public class CursoController {
     @Autowired
     @Qualifier(value = "docenteServiceMysql")
     private IDocenteService docenteService;
+
+    @Autowired
+    @Qualifier(value = "alumnoServiceMysql")
+    private IAlumnoService alumnoService;
 
 
     @GetMapping("/nuevo")
@@ -119,6 +128,41 @@ public class CursoController {
         this.cursoService.eliminarCurso(codigo);
         return "redirect:/curso/listado-cursos";
     }
+
+    @GetMapping("/buscar")
+    public ModelAndView getInsripcionCursoPage(@RequestParam(value = "dni", required = false)int dni) {
+        ModelAndView modelAndView = new ModelAndView("inscripcion_curso");
+        this.titulo = "Inscripcion de curso";
+        this.tituloForm = "Inscripción a Curso";
+        Alumno alumnoEncontrado = alumnoService.buscarAlumno(dni);
+        this.listaCursos = cursoService.getCursos();
+        modelAndView.addObject("titulo", this.titulo);
+        modelAndView.addObject("titulo_formulario", this.tituloForm);
+        modelAndView.addObject("cursos", this.listaCursos);
+        modelAndView.addObject(alumnoEncontrado);
+        
+        return modelAndView;
+    }
+
+    @PostMapping("/inscripcion")
+    public String getPagina(@ModelAttribute(value = "alumno")Alumno alumno) {
+        Curso cursoInscripto = cursoService.getCurso(alumno.getCodigoCurso());
+        Alumno alumnoEncontrado = alumnoService.buscarAlumno(alumno.getDni());
+        cursoInscripto.addAlumnos(alumnoEncontrado);
+        cursoService.guardarCurso(cursoInscripto);
+        return "redirect:/curso/listado-cursos";
+    }
+
+    @GetMapping("/inscribir")
+    public String getCursoInscripcionPage(Model model) {
+        this.titulo = "Inscripcion Curso";
+        this.tituloForm = "Buscar Alumno";
+        model.addAttribute("titulo", this.titulo);
+        model.addAttribute("titulo_formulario",this.tituloForm);
+        return "inscripcion";
+
+    }
+
 
 
     

@@ -145,8 +145,8 @@ public class CursoController {
     }
 
     @PostMapping("/inscripcion")
-    public String getPagina(@ModelAttribute(value = "alumno")Alumno alumno) {
-        Curso cursoInscripto = cursoService.getCurso(alumno.getCodigoCurso());
+    public String getPagina(@ModelAttribute(value = "alumno")Alumno alumno, @RequestParam(value = "codigo_curso")int codCurso) {
+        Curso cursoInscripto = cursoService.getCurso(codCurso);
         Alumno alumnoEncontrado = alumnoService.buscarAlumno(alumno.getDni());
         cursoInscripto.addAlumnos(alumnoEncontrado);
         cursoService.guardarCurso(cursoInscripto);

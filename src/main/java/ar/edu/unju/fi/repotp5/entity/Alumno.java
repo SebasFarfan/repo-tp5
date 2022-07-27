@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+// import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -48,8 +48,8 @@ public class Alumno {
     @ManyToMany(mappedBy = "alumnos")
     private Set<Curso> cursos;
 
-    @Transient
-    private int codigoCurso;
+    // @Transient
+    // private int codigoCurso;
 
     public Alumno() {
     }
@@ -121,13 +121,13 @@ public class Alumno {
         this.cursos = cursos;
     }
 
-    public int getCodigoCurso() {
-        return this.codigoCurso;
-    }
+    // public int getCodigoCurso() {
+    //     return this.codigoCurso;
+    // }
 
-    public void setCodigoCurso(int codigoCurso) {
-        this.codigoCurso = codigoCurso;
-    }
+    // public void setCodigoCurso(int codigoCurso) {
+    //     this.codigoCurso = codigoCurso;
+    // }
 
 
 }
